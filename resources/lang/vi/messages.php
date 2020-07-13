@@ -39,4 +39,5 @@ return [
     'textSendReset'=>'Gởi liên kết Tạo lại mật khẩu',
     'textPleaseConfirm'=>'Vui lòng xác nhận lại mật khẩu trước khi tiếp tục.',
     'dashboard'=>'Bảng điều khiển',
+    'textShortUrlErrorMessage'=>'Sorry! Your short URL does not exist. You need to check it or create new one with this app.<br>Rất tiếc địa chỉ rút gọn của bạn cung cấp không tồn tại. Bạn nên kiểm tra lại với người cung cấp hoặc tạo cái mới với ứng dụng này.',
 ];

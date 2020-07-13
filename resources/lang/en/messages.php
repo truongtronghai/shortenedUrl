@@ -39,4 +39,5 @@ return [
     'textSendReset'=>'Send Password Reset Link',
     'textPleaseConfirm'=>'Please confirm your password before continuing.',
     'dashboard'=>'Dashboard',
+    'textShortUrlErrorMessage'=>'Sorry! Your short URL does not exist. You need to check it or create new one with this app.<br>Rất tiếc địa chỉ rút gọn của bạn cung cấp không tồn tại. Bạn nên kiểm tra lại với người cung cấp hoặc tạo cái mới với ứng dụng này.',
 ];

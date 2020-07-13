@@ -46,7 +46,7 @@
     @if(session('sessionNotification'))
     <div class="row mt-1">
         <div class="col alert alert-danger">
-            <span>{{ session('sessionNotification') }}</span>
+            <span>{!! session('sessionNotification') !!}</span>
         </div>
     </div>
     @endif

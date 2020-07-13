@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'UrlController@index');
 Route::post('/', 'UrlController@store');
 
-Route::get('/lang/{locale?}',function($locale='en_US'){
-    session()->put('currentLang',in_array($locale,['vi_VN','en_US'])?$locale:'en_US');
+Route::get('/lang/{locale?}',function($locale='en'){
+    session()->put('currentLang',in_array($locale,['vi','en'])?$locale:'en');
     
     //dump(session()->all());
     return redirect('/');
