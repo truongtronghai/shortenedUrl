@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'UrlController@index');
+Route::post('/', 'UrlController@store');
+
+Route::get('/lang/{locale?}',function($locale='en_US'){
+    session()->put('currentLang',in_array($locale,['vi_VN','en_US'])?$locale:'en_US');
+    
+    //dump(session()->all());
+    return redirect('/');
 });
+/**
+ * Auth::routes() is just a helper class that helps you generate all the routes required for user authentication.
+ */
+//Auth::routes(['register'=>false]); // khong cho user dang ky
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{short}','UrlController@run');
