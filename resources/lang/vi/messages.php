@@ -8,7 +8,7 @@ return [
     'textResult'=>'Đã được rút gọn ở bên dưới :',
     'buttonCopy'=>'Lấy',
     'noImage'=>'Không hình',
-    'copyright' => 'Copyright 2020',
+    'copyright' => 'Bản quyền &copy; Rut.xyz 2020',
     'textErrorDb'=>'Không tạo được URL rút gọn. Vui lòng liên hệ quản trị hệ thống',
     'textLogin'=>'Đăng nhập',
     'textLogout'=>'Thoát',
@@ -40,4 +40,17 @@ return [
     'textPleaseConfirm'=>'Vui lòng xác nhận lại mật khẩu trước khi tiếp tục.',
     'dashboard'=>'Bảng điều khiển',
     'textShortUrlErrorMessage'=>'Sorry! Your short URL does not exist. You need to check it or create new one with this app.<br>Rất tiếc địa chỉ rút gọn của bạn cung cấp không tồn tại. Bạn nên kiểm tra lại với người cung cấp hoặc tạo cái mới với ứng dụng này.',
+    'textSearch'=>'Tìm kiếm',
+    'privacyPolicy'=>'Chính sách bảo mật',
+    'termCondition'=>'Điều kiện sử dụng',
+    'textLoggedInAs'=>'Người dùng',
+    'textRole'=>'Trong vai trò',
+    // role list
+    'roleGuest'=>'Khách',
+    'roleSignedInGuest'=>'Thành viên',
+    'roleSystemAdmin'=>'Quản trị hệ thống',
+    'rolePremium'=>'Premium',
+    'roleApi1'=>'API 1',
+    'roleApi2'=>'API 2',
+    ////////////
 ];

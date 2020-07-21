@@ -15,6 +15,7 @@ class CreateShortenedUrlsTable extends Migration
     {
         Schema::create('urls', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id');
             $table->text('url'); // url neu trung nhau thi show lai ket qua cu, khong tao them cai moi duplicate
             $table->string('shortened')->unique();
             $table->bigInteger('count')->default(0); // dem so luot su dung cua url. Moi khoi tao se la 0

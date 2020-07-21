@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col">
-            <img src="https://liketobuy.vn/wp-content/uploads/2020/03/banner-top-2.jpg" class="img-fluid mx-auto d-block" title='responsive image' />
+        <div id="topBanner" class="col">
+            <a href=''><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
         </div>
     </div>
     <div class="row">
@@ -52,15 +52,15 @@
     @endif
     
     @isset($resultUrls)
-    
+
     <div class="row mt-1">
         <div class="col">
-            <em><strong>{{ $resultUrls['original'] }}</strong></em>&nbsp;<span class="text-muted">{{ __('messages.textResult') }}</span>
+            <em><strong>{{ $resultUrls['original'] }}</strong></em> &nbsp;<span class="text-muted">{{ __('messages.textResult') }}</span>
         </div>
     </div>
     <div class="row mt-1 mb-1">
-        <div class="col">
-            <img src="https://liketobuy.vn/wp-content/uploads/2020/03/banner-top-2.jpg" class="img-fluid mx-auto d-block" title='responsive image' />
+        <div id="resultBanner" class="col">
+            <a href=''><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
         </div>
     </div>
     <div class="row mt-1">
@@ -94,12 +94,12 @@
     </div>
     @endisset
 
-    <div class="row mt-2" style="height: 100px; background-color: rgba(255,0,0,0.1);">
-        <div class="col border border-primary bg-info text-white h-100 align-middle text-center mr-1">
-            {{ __('messages.noImage') }}
+    <div class="row">
+        <div id="contentBanner0" class="col-lg mt-1 mb-1">
+            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
-        <div class="col border border-primary bg-info text-white h-100 align-middle text-center ml-1">
-            {{ __('messages.noImage') }}
+        <div id="contentBanner1" class="col-lg mt-1 mb-1">
+            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
 
@@ -133,22 +133,31 @@
             </div>
         </div>
     </div>
-    <div class="row mt-2" style="height: 100px; background-color: rgba(255,0,0,0.1);">
-        <div class="col border border-primary bg-info text-white h-100 align-middle text-center mr-1">
-            {{ __('No image') }}
+    <div class="row">
+        <div id="contentBanner2" class="col-lg mt-1 mb-1">
+            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
-        <div class="col border border-primary bg-info text-white h-100 align-middle text-center ml-1">
-            {{ __('No image') }}
+        <div id="contentBanner3" class="col-lg mt-1 mb-1">
+            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
-    <div class="row mt-2" style="height: 100px; background-color: rgba(255,0,0,0.1);">
-        <div class="col border border-primary bg-info text-white h-100 align-middle text-center mr-1">
-            {{ __('No image') }}
+    <div class="row">
+        <div id="contentBanner4" class="col-lg mt-1 mb-1">
+            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
-        <div class="col border border-primary bg-info text-white h-100 align-middle text-center ml-1">
-            {{ __('No image') }}
+        <div id="contentBanner5" class="col-lg mt-1 mb-1">
+            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
     
 </div>    
+@endsection
+
+@section('sticky_banner')
+{{-- sticky banner --}}
+<div id="dropupBox" class="row dropup container-fluid">
+  <div id="stickyBanner" class="col-lg dropup-content ">
+    <a href=''><img src="" class="img-fluid rounded-top mx-auto d-block" alt='' title='' /></a>
+  </div>
+</div> 
 @endsection

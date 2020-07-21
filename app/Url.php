@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Url extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['url','shortened'];
+    protected $fillable = ['url','shortened','user_id'];
 }

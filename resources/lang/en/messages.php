@@ -8,7 +8,7 @@ return [
     'textResult'=>'became short link below :',
     'buttonCopy'=>'Copy',
     'noImage'=>'No image',
-    'copyright' => 'Copyright 2020',
+    'copyright' => 'Copyright &copy; Rut.xyz 2020',
     'textErrorDb'=>'Something wrong. Cannot create short link. Please contact to administrator of system',
     'textLogin'=>'Login',
     'textLogout'=>'Logout',
@@ -40,4 +40,24 @@ return [
     'textPleaseConfirm'=>'Please confirm your password before continuing.',
     'dashboard'=>'Dashboard',
     'textShortUrlErrorMessage'=>'Sorry! Your short URL does not exist. You need to check it or create new one with this app.<br>Rất tiếc địa chỉ rút gọn của bạn cung cấp không tồn tại. Bạn nên kiểm tra lại với người cung cấp hoặc tạo cái mới với ứng dụng này.',
+    'textSearch'=>'Search for',
+    'privacyPolicy'=>'Privacy Policy',
+    'termCondition'=>'Terms &amp; Conditions',
+    'textLoggedInAs'=>'Logged in as',
+    'textRole'=>'With role',
+    /**
+     * 0 => system admin
+     * 1 => guest (anonymous)
+     * 2 => signed-in guest
+     * 3 => premium 1
+     * 4 => premium 2
+     * 5 => premium 3
+     */
+    'roleGuest'=>'Anonymous',
+    'roleSignedInGuest'=>'Signed in user',
+    'roleSystemAdmin'=>'Administrator',
+    'rolePremium'=>'Premium',
+    'roleApi1'=>'API 1',
+    'roleApi2'=>'API 2',
+    ////////////
 ];

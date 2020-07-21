@@ -13,14 +13,14 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!--link rel="dns-prefetch" href="//fonts.gstatic.com"-->
+    <!--link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"-->
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/misc.css') }}" rel="stylesheet">
 </head>
-<body>
+<body onload="getBanners('{{ url('/utils/banners') }}');toggleStickyBanner('dropupBox');">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
             <div class="container">
@@ -64,6 +64,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/admin/home') }}">
+                                        {{ __('messages.dashboard') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -87,10 +90,12 @@
 
         <footer id="footer" class="py-4">
             <div class="container text-center">
-            <small>Copyright &copy; Rut.xyz</small>
+            <small>{!! __('messages.copyright') !!}</small>
             </div>
         </footer>
-        
+
+        @yield('sticky_banner')
+
         <!-- scroll to top button -->
         <button onclick="scrollToTop()" id="scrollToTop" title="Go to top"><strong>&#8593;</strong></button>
     </div> 

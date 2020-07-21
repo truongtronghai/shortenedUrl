@@ -1,3 +1,4 @@
+/*---------Style for Scroll To Top button--------*/
 #scrollToTop {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
@@ -17,6 +18,32 @@
   #scrollToTop:hover {
     background-color: #555; /* Add a dark-grey background on hover */
   }
+/*---------Style for Dropup banner--------*/
+ 
+/* The container <div> - needed to position the dropup content */
+.dropup {
+  position: fixed;
+  bottom: 0px;
+  display: inline-block;
+  transition-property: bottom;
+  transition-duration: 1s;
+}
+
+/* Dropup content (Hidden by Default) */
+.dropup-content {
+  z-index: 98;
+}
+
+/* Links inside the dropup */
+.dropup-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropup links on hover */
+.dropup-content a:hover {background-color: #ddd}
+
 /*---------Style for Login page--------*/
   :root {
     --input-padding-x: 1.5rem;

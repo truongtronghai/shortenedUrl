@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 $factory->define(Url::class, function (Faker $faker) {
     return [
         "shortened"=>Str::random(20),
-        "url"=>$faker->url
+        "url"=>$faker->url,
+        "user_id"=>0
     ];
 });

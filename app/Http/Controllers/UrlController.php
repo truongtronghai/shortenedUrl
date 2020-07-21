@@ -22,25 +22,28 @@ class UrlController extends Controller
     
     public function store(Request $req){
         $url = new Url();
+        // tim xem URL nay da co trong DB chua
         $url = $url->where([
             ['url',$req->input('originalUrl')],
             //['expired_at','<=',date('Y-m-d H:i:s')]
             ])->first();
 
-        if(isset($url)){
+        if(isset($url)){ // neu da co trong DB thi thong bao ra URL rut gon
             $resultUrl = $url->shortened;
         }else{
-            $resultUrl = $this->shorteningUrlV2();
+            $resultUrl = $this->shorteningUrlV2(); // neu chua co thi tien hanh tao URL rut gon
             // save vao db
             try{
                 $url = new Url([
                     'url'=> $req->input('originalUrl'),
-                    'shortened' => $resultUrl
+                    'shortened' => $resultUrl,
+                    'user_id'=>auth()->check()?auth()->id:0
                 ]);
                 $url->save();
             }catch(\Exception $e){
                 Log::debug($e->getMessage());
-                $req->session()->flash('sessionNotification',__('messages.textErrorDb'));
+                $req->session()->flash('sessionNotification',__('messages.textErrorDb')); // khong luu duoc vao db
+                return view('url');
             }
         }
         
@@ -49,7 +52,7 @@ class UrlController extends Controller
 
     public function run($short){
         
-        // update vao db
+        // update vao db gia tri dem so lan truy cap thong qua URL rut gon
         try{
             $url = new Url();
             $url = $url->where([

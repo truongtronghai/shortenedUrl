@@ -1,22 +1,20 @@
-/*!
-    * Start Bootstrap - SB Admin v6.0.1 (https://startbootstrap.com/templates/sb-admin)
-    * Copyright 2013-2020 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-    */
-    (function($) {
-    "use strict";
+function toggleSidebar(classNameToggle){
+    if(document.body.classList.contains(classNameToggle))
+        document.body.classList.remove(classNameToggle);
+    else
+        document.body.classList.add(classNameToggle);
+}
 
-    // Add active state to sidbar nav links
+function addActiveStageNavLink(){
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-        $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
-            if (this.href === path) {
-                $(this).addClass("active");
-            }
-        });
-
-    // Toggle the side navigation
-    $("#sidebarToggle").on("click", function(e) {
-        e.preventDefault();
-        $("body").toggleClass("sb-sidenav-toggled");
+    var sideNavLinks = document.getElementById('layoutSidenav_nav')
+                                .getElementsByClassName('sb-sidenav')[0]
+                                .getElementsByClassName('nav-link');
+    
+    var arrSideNavLinks = [...sideNavLinks];// chuyen tu HTMLCollection thanh array
+    
+    arrSideNavLinks.forEach(element => {
+        if(element.href === path)
+            element.classList.add('active');
     });
-})(jQuery);
+}
