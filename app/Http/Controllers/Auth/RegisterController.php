@@ -68,6 +68,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 2, // khi đang ky vai tro mac dinh se la signed in user
+            'branded' => 0
         ]);
     }
 }

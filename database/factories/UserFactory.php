@@ -29,10 +29,10 @@ $factory->define(User::class, function (Faker $faker) {
          * 1 => guest (anonymous) // chi co 1 tai khoan loai nay de dung chung cho moi nguoi
          * 2 => signed-in guest // tai khoan dang ky mac dinh se la loai nay
          * 3 => premium
-         * 4 => API1
-         * 5 => API2
+         * 4 => API1 // chua xai toi
+         * 5 => API2 // chua xai toi
          */
-        'role' => rand(2,5),
-        'apis'=>0, // so lan goi api khi su dung loai tai khoan API
+        'role' => rand(2,3),
+        'branded'=>0, // so luong chuoi shortened tuy chinh
     ];
 });

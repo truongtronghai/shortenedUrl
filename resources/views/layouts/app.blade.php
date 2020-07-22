@@ -11,11 +11,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    {{--
     <!-- Fonts -->
-    <!--link rel="dns-prefetch" href="//fonts.gstatic.com"-->
-    <!--link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"-->
-
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    --}}
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/misc.css') }}" rel="stylesheet">
@@ -90,12 +90,10 @@
 
         <footer id="footer" class="py-4">
             <div class="container text-center">
-            <small>{!! __('messages.copyright') !!}</small>
+                <small>{!! __('messages.copyright') !!}</small>
             </div>
         </footer>
-
         @yield('sticky_banner')
-
         <!-- scroll to top button -->
         <button onclick="scrollToTop()" id="scrollToTop" title="Go to top"><strong>&#8593;</strong></button>
     </div> 

@@ -21,7 +21,10 @@ class CreateShortenedUrlsTable extends Migration
             $table->bigInteger('count')->default(0); // dem so luot su dung cua url. Moi khoi tao se la 0
             $dt = new DateTime(now());
             $table->timestamp('created_at')->default(date_format($dt, 'Y-m-d h:m:s'));
-            $table->timestamp('expired_at')->default(date_format($dt->add(new DateInterval('P6M')), 'Y-m-d h:m:s')); // het han mac dinh la 6 thang
+            $dt = $dt->add(new DateInterval('P3M')); // het han mac dinh la 3 thang (P3M)
+            $table->timestamp('expired_at')->default(date_format($dt, 'Y-m-d h:m:s'));
+            $dt = $dt->add(new DateInterval('P3M')); // them 3 thang de luu giu truoc khi tai su dung
+            $table->timestamp('kept_to')->default(date_format($dt, 'Y-m-d h:m:s'));
         });
     }
 

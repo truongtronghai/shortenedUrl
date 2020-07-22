@@ -1,3 +1,4 @@
+
 /*---------Style for Scroll To Top button--------*/
 #scrollToTop {
     display: none; /* Hidden by default */
@@ -24,25 +25,23 @@
 .dropup {
   position: fixed;
   bottom: 0px;
+  right: 0;
+  left: 0;
   display: inline-block;
   transition-property: bottom;
   transition-duration: 1s;
-}
-
-/* Dropup content (Hidden by Default) */
-.dropup-content {
   z-index: 98;
 }
 
-/* Links inside the dropup */
-.dropup-content a {
-  color: black;
-  text-decoration: none;
-  display: block;
+.dropup > div{
+  width: 70%;
 }
 
-/* Change color of dropup links on hover */
-.dropup-content a:hover {background-color: #ddd}
+@media (max-width: 576px){
+  .dropup > div{
+    width: 100%;
+  }
+}
 
 /*---------Style for Login page--------*/
   :root {

@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col mb-1">
-            <h1 class="text-center text-info font-weight-bold">{{ __('messages.title') }}</h1>
+            <h1 class="text-center text-primary font-weight-bold">{{ __('messages.title') }}</h1>
         </div>
     </div>
 
@@ -71,13 +71,40 @@
                         <span id="resultUrl">{{ config('app.url').'/'.$resultUrls['result'] }}</span>
                     </div>
                     <p class="card-text">{{ __('messages.textClipboardGuide') }}</p>
-                    <button class="btn btn-primary" onclick="copyToClipboard('resultUrl');">{{ __('messages.buttonCopy') }}</button>
+                    <a href="#" class="btn btn-primary" onclick="copyToClipboard('resultUrl');">{{ __('messages.buttonCopy') }}</a>
+                    @guest
+                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 3 {{ __('messages.textMonth') }}</p>
+                    @else
+                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 6 {{ __('messages.textMonth') }}</p>
+                    @endguest
+                    <p class="card-text">{{ __('messages.textWantLonger') }}</p>
+                    <p class="card-text">
+                        {{ __('messages.textFindOutMore') }}
+                        <a href="#planTable">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
+                            </svg>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
         
         <div class="col-lg-6">
             <div class="card align-self-center text-center">
+                @guest
+                <div class="card-body">
+                    <p class="card-text">{{ __('messages.textQrRecommend') }}</p>
+                    <p class="card-text">
+                        {{ __('messages.textFindOutMore') }}
+                        <a href="#planTable">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
+                            </svg>
+                        </a>
+                    </p>
+                </div>
+                @else
                 {{--
                     Phan nay dung de tao img co the download bang cach nhan nut
                     Chu y trong img co crossOrigin=''
@@ -89,6 +116,7 @@
                     <p class="card-text">{{ __('messages.textQrGuide') }}</p>
                     <a id='qrResultSave' href="#" download="my-qr-{{ $resultUrls['result'] }}.png" class="btn btn-primary" onclick="saveQrImage();">{{ __('messages.buttonSave') }}</a>
                 </div>
+                @endguest
             </div>
         </div>
     </div>
@@ -141,6 +169,7 @@
             <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
+    @include('comparison-table') {{-- chen 1 doan code ben ngoai vao --}}
     <div class="row">
         <div id="contentBanner4" class="col-lg mt-1 mb-1">
             <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
@@ -155,9 +184,20 @@
 
 @section('sticky_banner')
 {{-- sticky banner --}}
-<div id="dropupBox" class="row dropup container-fluid">
-  <div id="stickyBanner" class="col-lg dropup-content ">
-    <a href=''><img src="" class="img-fluid rounded-top mx-auto d-block" alt='' title='' /></a>
-  </div>
+<div id="dropupBox" class="dropup container-fluid">
+    <div id="stickyBanner" class="dropup-content mx-auto">
+        <div>
+            <a href="" type="button" onclick="document.getElementById('dropupBox').style.bottom='-120px';">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                </svg>
+            </a>
+        </div>
+        <div>
+            <a href=''><img src="" class="img-fluid rounded-top mx-auto d-block" alt='' title='' /></a>
+        </div>
+    </div>
 </div> 
 @endsection

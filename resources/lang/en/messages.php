@@ -27,7 +27,6 @@ return [
     'password'=>'Password',
     'rememberMe'=>'Remember me',
     'forgotYourPassword'=>'Forgot your password ?',
-    'textRegister'=>'Register',
     'confirmPassword'=>'Confirm Password',
     'textName'=>'Name',
     'textVerifyEmail'=>'Verify Your Email Address',
@@ -50,14 +49,37 @@ return [
      * 1 => guest (anonymous)
      * 2 => signed-in guest
      * 3 => premium 1
-     * 4 => premium 2
-     * 5 => premium 3
+     * 4 => premium 2 // chua xai toi
+     * 5 => premium 3 // chua xai toi
      */
-    'roleGuest'=>'Anonymous',
+    'roleGuest'=>'Guest',
     'roleSignedInGuest'=>'Signed in user',
     'roleSystemAdmin'=>'Administrator',
     'rolePremium'=>'Premium',
-    'roleApi1'=>'API 1',
-    'roleApi2'=>'API 2',
+    'roleApi1'=>'API 1', // chua xai toi
+    'roleApi2'=>'API 2', // chua xai toi
     ////////////
+    'textAccount'=>'Account',
+    'textExpiration'=>'Link exists for',
+    'textEmailSending'=>'Notification by email for expired link',
+    'textShowQr'=>'Create QR code for short link',
+    'textLinkStatistic'=>'Tracking your link in dashboard',
+    'textQrRecommend'=>'QR code just show for logged in user. Please log in or create an account.',
+    'textFindOutMore'=>'Find out more here : ',
+    'textNotificationLinkExpired'=>"This link has been created. It will exist for ",
+    'textMonth'=>'month',
+    'textMonths'=>'months',
+    'textWantLonger'=>'If you want to create link having expiration longer, please log in or create an account.',
+    'textFree'=>'Free',
+    'textChoosePlanTitle'=>'Why do you have to choose a plan?',
+    'textChoosePlanDesc'=>'Different plans will bring you different experiences',
+    'textOr'=>"or",
+    'textAnd'=>"and",
+    'textForAnalyzing'=>'still in dashboard for analyzing',
+    'textUpgrade'=>'Upgrade',
+    'textBrandUrls'=>'Custom back-half shortened string (Ex: https://rut.xyz/MyOwnUrl)',
+    'textUrlClick'=>'Link clicks',
+    'textLickCreation'=>'Link creation',
+    'textUnlimited'=>'Unlimited',
+    'textTimes'=>'times',
 ];

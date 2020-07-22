@@ -25,11 +25,11 @@ Route::get('/lang/{locale?}',function($locale='en'){
  * Auth::routes() is just a helper class that helps you generate all the routes required for user authentication.
  */
 //Auth::routes(['register'=>false]); // khong cho user dang ky
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/admin/home', 'HomeController@index')->name('home');
 
-Route::get('/utils/banners', function () {
+Route::get('/utils/banners', function () { // link nay de goi den tap tin quan ly cac banners
     $fname = storage_path('app'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'banners.json');
     $fhandle = fopen($fname,'r');
     return fread($fhandle,filesize($fname)); // tra ve chuoi JSON

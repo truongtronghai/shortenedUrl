@@ -37,11 +37,13 @@ class UrlController extends Controller
                 $url = new Url([
                     'url'=> $req->input('originalUrl'),
                     'shortened' => $resultUrl,
-                    'user_id'=>auth()->check()?auth()->id:0
+                    'user_id'=>auth()->check()?auth()->user()->id:2, // neu khong auth() se mac dinh la Guest (user_id=2)
+                    'count'=>0
                 ]);
                 $url->save();
             }catch(\Exception $e){
-                Log::debug($e->getMessage());
+                //dd(auth()->user()->id);
+                Log::debug('UrlController::store() : '.$e->getMessage());
                 $req->session()->flash('sessionNotification',__('messages.textErrorDb')); // khong luu duoc vao db
                 return view('url');
             }

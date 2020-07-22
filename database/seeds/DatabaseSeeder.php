@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('1234567890'),
             'remember_token' => null,
             'role' => 0,
-            'apis'=>0,
+            'branded'=>0,
+            'created_at'=>now(),
+            'updated_at'=>now()
         ]);
 
         DB::table('users')->insert([
@@ -28,7 +30,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('1234567890'),
             'remember_token' => null,
             'role' => 1,
-            'apis'=>0,
+            'branded'=>0,
+            'created_at'=>now(),
+            'updated_at'=>now()
         ]);
 
         $this->call(UrlsSeeder::class);

@@ -11,6 +11,6 @@ $factory->define(Url::class, function (Faker $faker) {
     return [
         "shortened"=>Str::random(20),
         "url"=>$faker->url,
-        "user_id"=>0
+        "user_id"=>2 // guest role
     ];
 });
