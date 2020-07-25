@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relationship with urls table
+     */
+    public function urls(){
+        return $this->hasMany('App\Url');
+    }
 }

@@ -33,6 +33,6 @@ $factory->define(User::class, function (Faker $faker) {
          * 5 => API2 // chua xai toi
          */
         'role' => rand(2,3),
-        'branded'=>0, // so luong chuoi shortened tuy chinh
+        'branded'=>rand(0,500), // so luong chuoi shortened tuy chinh
     ];
 });

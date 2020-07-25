@@ -37,45 +37,70 @@ const app = new Vue({
  * => read this: https://www.green-box.co.uk/adding-javascript-functions-to-laravel-mix-and-why-you-get-error-uncaught-referenceerror-function-is-not-defined/
  */
 window.getBanners = function(url){
-    //console.log(url);
      fetch(url)
      .then((res)=>{
-         //console.log(res);
          return res.json();
      })
      .then((json)=>{
         document.getElementById('topBanner').getElementsByTagName('img')[0].setAttribute('src',json.top.img);
+        document.getElementById('topBanner').getElementsByTagName('img')[0].setAttribute('alt',json.top.alt_text);
+        document.getElementById('topBanner').getElementsByTagName('img')[0].setAttribute('title',json.top.title);
+        document.getElementById('topBanner').getElementsByTagName('img')[0].style.width = json.top.dimension.width;
         document.getElementById('topBanner').getElementsByTagName('a')[0].setAttribute('href',json.top.url);
 
         let el = document.getElementById('resultBanner');
         if(el!==null){
             el.getElementsByTagName('img')[0].setAttribute('src',json.result.img);
+            el.getElementsByTagName('img')[0].setAttribute('alt',json.result.alt_text);
+            el.getElementsByTagName('img')[0].setAttribute('title',json.result.title);
+            el.getElementsByTagName('img')[0].style.width = json.result.dimension.width;
             el.getElementsByTagName('a')[0].setAttribute('href',json.result.url);
         }
         
         document.getElementById('contentBanner0').getElementsByTagName('img')[0].setAttribute('src',json.content[0].img);
+        document.getElementById('contentBanner0').getElementsByTagName('img')[0].setAttribute('alt',json.content[0].alt_text);
+        document.getElementById('contentBanner0').getElementsByTagName('img')[0].setAttribute('title',json.content[0].title);
+        document.getElementById('contentBanner0').getElementsByTagName('img')[0].style.width = json.content[0].dimension.width;
         document.getElementById('contentBanner0').getElementsByTagName('a')[0].setAttribute('href',json.content[0].url);
 
         document.getElementById('contentBanner1').getElementsByTagName('img')[0].setAttribute('src',json.content[1].img);
+        document.getElementById('contentBanner1').getElementsByTagName('img')[0].setAttribute('alt',json.content[1].alt_text);
+        document.getElementById('contentBanner1').getElementsByTagName('img')[0].setAttribute('title',json.content[1].title);
+        document.getElementById('contentBanner1').getElementsByTagName('img')[0].style.width = json.content[0].dimension.width;
         document.getElementById('contentBanner1').getElementsByTagName('a')[0].setAttribute('href',json.content[1].url);
 
         document.getElementById('contentBanner2').getElementsByTagName('img')[0].setAttribute('src',json.content[2].img);
+        document.getElementById('contentBanner2').getElementsByTagName('img')[0].setAttribute('alt',json.content[2].alt_text);
+        document.getElementById('contentBanner2').getElementsByTagName('img')[0].setAttribute('title',json.content[2].title);
+        document.getElementById('contentBanner2').getElementsByTagName('img')[0].style.width = json.content[0].dimension.width;
         document.getElementById('contentBanner2').getElementsByTagName('a')[0].setAttribute('href',json.content[2].url);
 
         document.getElementById('contentBanner3').getElementsByTagName('img')[0].setAttribute('src',json.content[3].img);
+        document.getElementById('contentBanner3').getElementsByTagName('img')[0].setAttribute('alt',json.content[3].alt_text);
+        document.getElementById('contentBanner3').getElementsByTagName('img')[0].setAttribute('title',json.content[3].title);
+        document.getElementById('contentBanner3').getElementsByTagName('img')[0].style.width = json.content[0].dimension.width;
         document.getElementById('contentBanner3').getElementsByTagName('a')[0].setAttribute('href',json.content[3].url);
 
         document.getElementById('contentBanner4').getElementsByTagName('img')[0].setAttribute('src',json.content[4].img);
+        document.getElementById('contentBanner4').getElementsByTagName('img')[0].setAttribute('alt',json.content[4].alt_text);
+        document.getElementById('contentBanner4').getElementsByTagName('img')[0].setAttribute('title',json.content[4].title);
+        document.getElementById('contentBanner4').getElementsByTagName('img')[0].style.width = json.content[0].dimension.width;
         document.getElementById('contentBanner4').getElementsByTagName('a')[0].setAttribute('href',json.content[4].url);
 
         document.getElementById('contentBanner5').getElementsByTagName('img')[0].setAttribute('src',json.content[5].img);
+        document.getElementById('contentBanner5').getElementsByTagName('img')[0].setAttribute('alt',json.content[5].alt_text);
+        document.getElementById('contentBanner5').getElementsByTagName('img')[0].setAttribute('title',json.content[5].title);
+        document.getElementById('contentBanner5').getElementsByTagName('img')[0].style.width = json.content[0].dimension.width;
         document.getElementById('contentBanner5').getElementsByTagName('a')[0].setAttribute('href',json.content[5].url);
         
 
         el = document.getElementById('stickyBanner');
         if(el!==null){
-            el.getElementsByTagName('img')[0].setAttribute('src',json.top.img);
-            el.getElementsByTagName('a')[0].setAttribute('href',json.top.url);
+            el.getElementsByTagName('img')[0].setAttribute('src',json.sticky.img);
+            el.getElementsByTagName('img')[0].setAttribute('alt',json.sticky.alt_text);
+            el.getElementsByTagName('img')[0].setAttribute('title',json.sticky.title);
+            el.getElementsByTagName('img')[0].style.width = json.sticky.dimension.width;
+            el.getElementsByTagName('a')[1].setAttribute('href',json.sticky.url); // phan tu [0] la nut close
         }
      });
 }
@@ -85,4 +110,18 @@ window.toggleStickyBanner = function(id){
     setInterval(() => {
         el.style.bottom = el.style.bottom==="0px"?"-120px":"0px"; 
     }, 5000);
+}
+
+/**
+ * Canvas and QR image
+ */
+window.saveQrImage = function(){
+    const canvas = document.createElement('canvas');
+    const img = document.getElementById('qrResultImage');
+    canvas.width=img.width;
+    canvas.height=img.height;
+    const context = canvas.getContext('2d');
+    context.drawImage(img,0,0);
+    
+    document.getElementById('qrResultSave').href = canvas.toDataURL('image/png');
 }

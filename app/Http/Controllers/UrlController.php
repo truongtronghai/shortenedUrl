@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\App;
 use App\Url;
+use App\User;
 
 class UrlController extends Controller
 {
@@ -16,40 +17,126 @@ class UrlController extends Controller
     }
 
     public function index(){
-        //dump(session()->all());
         return view('url');
     }
     
     public function store(Request $req){
-        $url = new Url();
-        // tim xem URL nay da co trong DB chua
-        $url = $url->where([
-            ['url',$req->input('originalUrl')],
-            //['expired_at','<=',date('Y-m-d H:i:s')]
-            ])->first();
+        $user_id = 2; // neu khong auth() se mac dinh la Guest (user_id=2)
+        $resultUrl = "";
+        //dump($this->getRoleOfUser(2));
+        if(auth()->check()){
+            $user_id = auth()->user()->id;
+            // khi la 1 logged in user thi moi xet toi customString
+            $tmp = $req->input('customString');
+            // neu chuoi custom nay dang duoc su dung
+            
+            if($this->checkDuplicateCustomString($tmp)){
+                $req->session()->flash('sessionNotification',$tmp.' '.__('messages.textDuplicateCustomString'));
+                return view('url'); // ve trang chinh de thong bao loi
+            }
 
-        if(isset($url)){ // neu da co trong DB thi thong bao ra URL rut gon
-            $resultUrl = $url->shortened;
-        }else{
+            if(isset($tmp)){ // Neu user co su dung customString
+                if($this->getNumberOfBrandedString($user_id)){ // kiem tra xem nguoi nay con so luong branded (>0) de su dung hay khong
+                    $resultUrl = $tmp;
+                    // tao mot record moi trong url table va luu no. Dong thoi cap nhat giam so luong branded string cua user
+                    try{
+
+                        $url = new Url([
+                            'url'=> $req->input('originalUrl'),
+                            'shortened' => $resultUrl,
+                            'user_id'=>$user_id, 
+                            'count'=>0
+                        ]);
+                        $url->save();
+
+                        try{
+                            $user = new User();
+                            $user = $user->where('id',$user_id)->first();
+                            $user->branded = $user->branded - 1;
+                            $user->save();
+                        }catch(\Exception $e){
+                            Log::debug('UrlController::store()-update number of branded string of user : '.$e->getMessage());
+                            $req->session()->flash('sessionNotification',__('messages.textErrorDb')); // khong luu duoc vao db
+                            return view('url'); // ve trang chinh de thong bao loi
+                        }
+                        // tao va save thanh cong
+                        return view('url')->with('resultUrls',['result'=>$resultUrl,'original'=>$req->input('originalUrl')]);
+                    }catch(\Exception $e){
+                        Log::debug('UrlController::store()-store new record with custome string to url table : '.$e->getMessage());
+                        $req->session()->flash('sessionNotification',__('messages.textErrorDb')); // khong luu duoc vao db
+                        return view('url'); // ve trang chinh de thong bao loi
+                    }
+                }else{
+                    // neu khong con thi thong bao cho user
+                    $req->session()->flash('sessionNotification',__('messages.textRunOutBrandedString'));
+                    return view('url'); // ve trang chinh de thong bao loi
+                }
+                
+            }
+        } 
+        
+        $url = new Url();
+        // tim xem co record nao trong bang url cua DB ma da het han
+        $url = $url->where('kept_to','<=',date('Y-m-d H:i:s'))->orderby('id')->first();
+        
+        if(isset($url)){ // neu co mot record da het han thi tai su dung
+            try{ // update vao db
+                $url->user_id = $user_id;
+                $url->url = $req->input('originalUrl');
+                $url->count = 0;
+                // cap nhat lai ngay thang het han cua url
+                switch($this->getRoleOfUser($user_id)){
+                    case 0: // neu user la system admin (tam thoi cho giong loai user role=2)
+                    case 2: // neu user la logged in
+                        $dt = new \DateTime(now()); // dau '\' phia truoc la de Laravel biet ham nay cua PHP
+                        $url->created_at = date_format($dt, 'Y-m-d h:m:s');
+                        
+                        $dt = $dt->add(new \DateInterval('P6M')); // het han sau 6 thang (P6M)
+                        $url->expired_at = date_format($dt, 'Y-m-d h:m:s');
+                        
+                        $dt = $dt->add(new \DateInterval('P3M')); // them 3 thang de luu giu truoc khi tai su dung
+                        $url->kept_to = date_format($dt, 'Y-m-d h:m:s');
+                        break;
+                    default: // mac dinh user la role=1 (guest)
+                        $dt = new \DateTime(now());
+                        $url->created_at = date_format($dt, 'Y-m-d h:m:s');
+                        
+                        $dt = $dt->add(new \DateInterval('P3M')); // het han mac dinh la 3 thang (P3M)
+                        $url->expired_at = date_format($dt, 'Y-m-d h:m:s');
+                        
+                        $dt = $dt->add(new \DateInterval('P3M')); // them 3 thang de luu giu truoc khi tai su dung
+                        $url->kept_to = date_format($dt, 'Y-m-d h:m:s');
+                }
+
+                $resultUrl = $url->shortened;// lay lai chuoi tai su dung
+                $url->save();
+
+                return view('url')->with('resultUrls',['result'=>$resultUrl,'original'=>$req->input('originalUrl')]);
+            }catch(\Exception $e){
+                Log::debug('UrlController::store()-update recycled record to url table : '.$e->getMessage());
+                $req->session()->flash('sessionNotification',__('messages.textErrorDb')); // khong luu duoc vao db
+                return view('url');
+            }
+        }else{ // neu khong co cai de tai su dung thi tao record moi
             $resultUrl = $this->shorteningUrlV2(); // neu chua co thi tien hanh tao URL rut gon
             // save vao db
             try{
                 $url = new Url([
                     'url'=> $req->input('originalUrl'),
                     'shortened' => $resultUrl,
-                    'user_id'=>auth()->check()?auth()->user()->id:2, // neu khong auth() se mac dinh la Guest (user_id=2)
+                    'user_id'=>$user_id, 
                     'count'=>0
                 ]);
                 $url->save();
+                return view('url')->with('resultUrls',['result'=>$resultUrl,'original'=>$req->input('originalUrl')]);
             }catch(\Exception $e){
-                //dd(auth()->user()->id);
-                Log::debug('UrlController::store() : '.$e->getMessage());
+                
+                Log::debug('UrlController::store()-store new record to db : '.$e->getMessage());
                 $req->session()->flash('sessionNotification',__('messages.textErrorDb')); // khong luu duoc vao db
                 return view('url');
             }
         }
         
-        return view('url')->with('resultUrls',['result'=>$resultUrl,'original'=>$req->input('originalUrl')]);
     }
 
     public function run($short){
@@ -139,5 +226,33 @@ class UrlController extends Controller
         // neu ra khoi vong while nghia la chuoi $s chua co trong DB. Co the dung tao chuoi moi duoc
         return $s;
     }
+    /**
+     * kiem tra so luong branded string cua user con hay khong
+     */
+    protected function getNumberOfBrandedString($user_id){
+        $user = new User();
+        $user = $user->where('id',$user_id)->first();
+        return $user->branded;
+    }
+    /**
+     * lay role cua user
+     */
+    protected function getRoleOfUser($user_id){
+        
+        $user = new User();
+        $user = $user->where('id',$user_id)->first();
+        return $user->role;
+    }
 
+    protected function checkDuplicateCustomString($s){
+        $url = Url::where([
+            ['shortened',$s],
+            ['expired_at','>=',now()]
+        ])->first();
+        
+        if(isset($url))
+            return true;
+        
+        return false;
+    }
 }

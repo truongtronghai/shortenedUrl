@@ -35,4 +35,6 @@ Route::get('/utils/banners', function () { // link nay de goi den tap tin quan l
     return fread($fhandle,filesize($fname)); // tra ve chuoi JSON
 });
 
+Route::get('/utils/checkDuplicateCustomString','UrlController@checkDuplicateCustomString');
+
 Route::get('/{short}','UrlController@run');

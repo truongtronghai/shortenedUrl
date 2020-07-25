@@ -76,4 +76,10 @@ return [
     'textLickCreation'=>'Số lượng URL được tạo',
     'textUnlimited'=>'Không giới hạn',
     'textTimes'=>'lần',
+    'textPutYourCustomString'=>'Nếu muốn tạo ra URL với chuỗi tự chọn, nhập các ký tự ở đây :',
+    'textCustomStringAlert'=>'URL rút gọn của bạn sẽ là : ',
+    'textUrlLengthAlert'=>'Tổng số ký tự : ',
+    'txtWrongCustomStringPattern'=>'Chuỗi tự chọn không hợp lệ. Chỉ dùng: [0-9][a-z][A-Z]',
+    'textRunOutBrandedString'=>'Xin lỗi, số lượng chuỗi tự chọn của bạn trong tài khoản đã hết. Vui lòng sử dụng tạm URL ngẫu nhiên.',
+    'textDuplicateCustomString'=>' đã được sử dụng rồi. Vui lòng chọn cái khác.',
 ];

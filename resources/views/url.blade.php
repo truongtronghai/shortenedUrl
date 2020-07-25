@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div id="topBanner" class="col">
-            <a href=''><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
         </div>
     </div>
     <div class="row">
@@ -21,31 +21,54 @@
         </div>
     </div>
     
-    <form method="POST" action="{{ url('/') }}" onsubmit="return checkUrlValid(document.getElementById('originalUrl').value)" novalidate>
+    <form method="POST" action="{{ url('/') }}" onsubmit="
+        return checkUrlValid(document.getElementById('originalUrl').value) 
+        && checkCustomStringValid(document.getElementById('customString').value);" novalidate>
         @csrf
 
     <div class="row">
         <div class="col-md-11 col-9">
-            <input id="originalUrl" type="text" class="form-control" name="originalUrl" placeholder="https://" required autofocus>
+            <input id="originalUrl" type="text" class="form-control" name="originalUrl" placeholder="https://" required autofocus oninput="if(checkUrlValid(this.value)) document.getElementById('btnGo').disabled=false;else document.getElementById('btnGo').disabled=true;">
+            @if(isset(auth()->user()->id))
+                <input type="hidden" id="userId" name="userId" value="{{auth()->user()->id}}">
+            @else
+                <input type="hidden" id="userId" name="userId" value="2"> {{--id cua guest--}}
+            @endif
+
         </div>
         <div class="col-md-1 col-3">
-            <button id="btnGo" type="submit" class="btn btn-primary">
+            <button id="btnGo" type="submit" class="btn btn-primary" disabled >
                 {{ __('messages.buttonGo') }}
             </button>
         </div>
     </div>
-
+   @auth
+    <div class="row">
+        <div class="col">
+            <label for="customString">{{__('messages.textPutYourCustomString')}}</label>
+            <input id="customString" type="text" class="form-control" name="customString" placeholder="" oninput="watchCustomString(this.value);">
+        </div>
+        <div class="col">
+            <span>{{__('messages.textCustomStringAlert')}}</span>
+            <br/>
+            <span id="customStringResult" class="text-success"></span>
+            <br/>
+            <span>{{__('messages.textUrlLengthAlert')}}</span><span id="customStringLength" class="text-primary"></span>
+        </div>
+    </div>
+    @endauth
     </form>
     
     <div class="row mt-1">
         <div class="col">
             <span id="txtMessageWarningEmpty" class="d-none">* {{ __('messages.textEmpty') }}</span>
             <span id="txtMessageWarningWrong" class="d-none">* {{ __('messages.textWrongPattern') }}</span>
+            <span id="txtMessageWarningWrongCustomStringPattern" class="d-none">* {{ __('messages.txtWrongCustomStringPattern') }}</span>
         </div>
     </div>
     @if(session('sessionNotification'))
     <div class="row mt-1">
-        <div class="col alert alert-danger">
+        <div class="col alert alert-danger text-center">
             <span>{!! session('sessionNotification') !!}</span>
         </div>
     </div>
@@ -60,7 +83,7 @@
     </div>
     <div class="row mt-1 mb-1">
         <div id="resultBanner" class="col">
-            <a href=''><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
         </div>
     </div>
     <div class="row mt-1">
@@ -73,9 +96,9 @@
                     <p class="card-text">{{ __('messages.textClipboardGuide') }}</p>
                     <a href="#" class="btn btn-primary" onclick="copyToClipboard('resultUrl');">{{ __('messages.buttonCopy') }}</a>
                     @guest
-                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 3 {{ __('messages.textMonth') }}</p>
+                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 3 {{ __('messages.textMonths') }}</p>
                     @else
-                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 6 {{ __('messages.textMonth') }}</p>
+                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 6 {{ __('messages.textMonths') }}</p>
                     @endguest
                     <p class="card-text">{{ __('messages.textWantLonger') }}</p>
                     <p class="card-text">
@@ -124,10 +147,10 @@
 
     <div class="row">
         <div id="contentBanner0" class="col-lg mt-1 mb-1">
-            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
         <div id="contentBanner1" class="col-lg mt-1 mb-1">
-            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
 
@@ -163,19 +186,19 @@
     </div>
     <div class="row">
         <div id="contentBanner2" class="col-lg mt-1 mb-1">
-            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
         <div id="contentBanner3" class="col-lg mt-1 mb-1">
-            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
     @include('comparison-table') {{-- chen 1 doan code ben ngoai vao --}}
     <div class="row">
         <div id="contentBanner4" class="col-lg mt-1 mb-1">
-            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
         <div id="contentBanner5" class="col-lg mt-1 mb-1">
-            <a href=''><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
     
@@ -196,7 +219,7 @@
             </a>
         </div>
         <div>
-            <a href=''><img src="" class="img-fluid rounded-top mx-auto d-block" alt='' title='' /></a>
+            <a href='' target="_blank"><img src="" class="img-fluid rounded-top mx-auto d-block" alt='' title='' /></a>
         </div>
     </div>
 </div> 

@@ -18,8 +18,10 @@ function checkUrlValid(url){
         document.getElementById('txtMessageWarningWrong').className = 'd-none';
         tmp = document.getElementById('txtMessageWarningEmpty');
         tmp.style.color = 'red';
-        tmp.className = 'd-inline';
+        tmp.className = 'd-block';
         return false;
+    }else{
+        document.getElementById('txtMessageWarningEmpty').className = 'd-none';
     }
 
     let urlPattern = new RegExp(/(https?):\/\/(\w[-\w]*\.)+([a-zA-Z]{2,9})(:\d{1,4})?([-\w\/#~:.?+=&%@]*)/);
@@ -28,13 +30,70 @@ function checkUrlValid(url){
         document.getElementById('txtMessageWarningEmpty').className = 'd-none';     
         tmp = document.getElementById('txtMessageWarningWrong');
         tmp.style.color = 'red';
-        tmp.className = 'd-inline';
+        tmp.className = 'd-block';
         return false;
+    }else{
+        document.getElementById('txtMessageWarningWrong').className = 'd-none';
     }
 
     return true;
 }
 
+function checkCustomStringValid(s){
+    let tmp = document.getElementById('txtMessageWarningWrongCustomStringPattern');
+    let valid = false; // khoi tao bien valid se chua ket qua kiem tra
+    if(s.length===0){
+        tmp.className = 'd-none';
+        valid=true; // khong su dung chuoi custom string nen khong can xet
+    }
+
+    let patt = new RegExp(/^[a-zA-Z0-9]*$/); // chi chap nhan AlphaNummeric
+    
+    if(patt.test(s)){
+        tmp.className = 'd-none';
+        valid = true;
+    }else{
+        tmp.className = 'd-block';
+        tmp.style.color = 'red';
+        valid = false;  
+    }
+    
+    return valid;
+}
+
+// function checkNotDuplicateCustomString(s){
+//     let valid = false;
+//     //console.log('call ajax')
+//     $.ajaxSetup({
+//         async: false // lam cho AJAX synchronous vi can phai cho xem ket qua tra ve tu loi goi den service truoc khi lam tiep
+//     });
+//     $.ajax({
+//         url: './utils/checkDuplicateCustomString/',
+//         data: {'str':s},
+//         success: function(res){
+//             if(res.result){// chuoi custom string da duoc su dung
+//                 document.getElementById('txtMessageWarningDuplicateCustomString').className = 'd-block';
+//                 valid = false;
+//             }else{// chuoi custom string chua duoc su dung
+//                 document.getElementById('txtMessageWarningDuplicateCustomString').className = 'd-none';
+//                 valid = true;
+//             }
+//         },
+//         dataType: 'json'
+//     });
+//     // console.log('end call ajax')
+//     return valid;
+// }
+
+function watchCustomString(s){
+    if(checkCustomStringValid(s)){
+        document.getElementById('customStringResult').innerText = s.length?('rut.xyz/'+s):'';
+        document.getElementById('customStringLength').innerText = s.length?(s.length+8):'';
+    }else{
+        document.getElementById('customStringResult').innerText = '';
+        document.getElementById('customStringLength').innerText = '';
+    }
+}
 /**
  * when user scrolls down number of pixels from top of document, showing the button
  */
@@ -52,17 +111,3 @@ function scrollToTop(){
 
 // when window scrolling
 window.onscroll = () => showScrollToTopButton(document.getElementById('scrollToTop'));
-
-/**
- * Canvas and QR image
- */
-function saveQrImage(){
-    const canvas = document.createElement('canvas');
-    const img = document.getElementById('qrResultImage');
-    canvas.width=img.width;
-    canvas.height=img.height;
-    const context = canvas.getContext('2d');
-    context.drawImage(img,0,0);
-    
-    document.getElementById('qrResultSave').href = canvas.toDataURL('image/png');
-}

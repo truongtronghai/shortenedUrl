@@ -8,4 +8,8 @@ class Url extends Model
 {
     public $timestamps = false;
     protected $fillable = ['url','shortened','user_id'];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

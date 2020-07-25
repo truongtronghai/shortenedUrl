@@ -82,4 +82,10 @@ return [
     'textLickCreation'=>'Link creation',
     'textUnlimited'=>'Unlimited',
     'textTimes'=>'times',
+    'textPutYourCustomString'=>'If you want to create your url with your string, put it here :',
+    'textCustomStringAlert'=>'Your custom url will be : ',
+    'textUrlLengthAlert'=>'Number of characters : ',
+    'txtWrongCustomStringPattern'=>'Custom string is not right. Just using: [0-9][a-z][A-Z]',
+    'textRunOutBrandedString'=>'Sorry, your number of custom strings in your account runs out. Please just use random short url.',
+    'textDuplicateCustomString'=>' is used by someone. Please choose another one.',
 ];

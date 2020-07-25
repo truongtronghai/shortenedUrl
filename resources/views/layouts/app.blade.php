@@ -22,13 +22,13 @@
 </head>
 <body onload="getBanners('{{ url('/utils/banners') }}');toggleStickyBanner('dropupBox');">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #6e0278;">
             <div class="container">
-                <a class="navbar-brand text-white" href="{{ url('/') }}">
-                    <h1><strong>Rut.xyz</strong></h1>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="/images/rut-logo.png" class="" alt='logo rut.xyz' title='Rut.xyz' />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon text-white"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,34 +40,34 @@
                     <ul class="navbar-nav ml-auto">
                         @if(App::isLocale('en')) 
                         <li class="nav-item">
-                            <a class="nav-link" href="/lang/vi">tiếng Việt</a>
+                            <a class="nav-link text-white" href="/lang/vi">tiếng Việt</a>
                         </li>
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="/lang/en">English</a>
+                            <a class="nav-link text-white" href="/lang/en">English</a>
                         </li>
                         @endif
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.textLogin') }}</a>
+                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('messages.textLogin') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('messages.textRegister') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('messages.textRegister') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/admin/home') }}">
+                                    <a class="dropdown-item text-white" href="{{ url('/admin/home') }}">
                                         {{ __('messages.dashboard') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item text-white" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('messages.textLogout') }}
@@ -84,7 +84,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-0">
             @yield('content')
         </main>
 
