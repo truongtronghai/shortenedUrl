@@ -125,3 +125,22 @@ window.saveQrImage = function(){
     
     document.getElementById('qrResultSave').href = canvas.toDataURL('image/png');
 }
+
+window.passValuesToChangeUsernameModal = function(id,name){
+    document.getElementById("username").value = name;
+    document.getElementById("userid").value = id;
+}
+
+window.changeUsername = function(id,name){
+    //console.log('call ajax')
+    $.ajax({
+        url: '../utils/changeUsername',
+        type: 'get',
+        data: {'username':name,'userid':id},
+        success: function(res){
+            document.getElementById('showUsername').innerText = res;
+        },
+        dataType: 'text'
+    });
+    // console.log('end call ajax')
+}

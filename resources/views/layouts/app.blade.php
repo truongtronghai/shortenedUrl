@@ -22,13 +22,13 @@
 </head>
 <body onload="getBanners('{{ url('/utils/banners') }}');toggleStickyBanner('dropupBox');">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #6e0278;">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #6e0278;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/images/rut-logo.png" class="" alt='logo rut.xyz' title='Rut.xyz' />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon text-white"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -64,10 +64,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item text-white" href="{{ url('/admin/home') }}">
+                                    <a class="dropdown-item" href="{{ url('/admin/home') }}">
                                         {{ __('messages.dashboard') }}
                                     </a>
-                                    <a class="dropdown-item text-white" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('messages.textLogout') }}

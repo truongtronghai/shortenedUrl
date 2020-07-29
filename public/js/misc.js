@@ -61,30 +61,6 @@ function checkCustomStringValid(s){
     return valid;
 }
 
-// function checkNotDuplicateCustomString(s){
-//     let valid = false;
-//     //console.log('call ajax')
-//     $.ajaxSetup({
-//         async: false // lam cho AJAX synchronous vi can phai cho xem ket qua tra ve tu loi goi den service truoc khi lam tiep
-//     });
-//     $.ajax({
-//         url: './utils/checkDuplicateCustomString/',
-//         data: {'str':s},
-//         success: function(res){
-//             if(res.result){// chuoi custom string da duoc su dung
-//                 document.getElementById('txtMessageWarningDuplicateCustomString').className = 'd-block';
-//                 valid = false;
-//             }else{// chuoi custom string chua duoc su dung
-//                 document.getElementById('txtMessageWarningDuplicateCustomString').className = 'd-none';
-//                 valid = true;
-//             }
-//         },
-//         dataType: 'json'
-//     });
-//     // console.log('end call ajax')
-//     return valid;
-// }
-
 function watchCustomString(s){
     if(checkCustomStringValid(s)){
         document.getElementById('customStringResult').innerText = s.length?('rut.xyz/'+s):'';

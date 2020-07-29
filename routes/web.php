@@ -28,6 +28,10 @@ Route::get('/lang/{locale?}',function($locale='en'){
 Auth::routes(['verify' => true]);
 
 Route::get('/admin/home', 'HomeController@index')->name('home');
+Route::get('/admin/users', 'HomeController@users');
+Route::post('/admin/users', 'HomeController@users');
+Route::get('/admin/urls', 'HomeController@urls');
+Route::post('/admin/urls', 'HomeController@urls');
 
 Route::get('/utils/banners', function () { // link nay de goi den tap tin quan ly cac banners
     $fname = storage_path('app'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'banners.json');
@@ -35,6 +39,6 @@ Route::get('/utils/banners', function () { // link nay de goi den tap tin quan l
     return fread($fhandle,filesize($fname)); // tra ve chuoi JSON
 });
 
-Route::get('/utils/checkDuplicateCustomString','UrlController@checkDuplicateCustomString');
+Route::get('/utils/changeUsername','HomeController@changeUsername');
 
 Route::get('/{short}','UrlController@run');

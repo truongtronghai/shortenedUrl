@@ -18,6 +18,7 @@ class CreateShortenedUrlsTable extends Migration
             $table->foreignId('user_id')->nullable(false)->default(2);
             $table->text('url'); // url neu trung nhau thi show lai ket qua cu, khong tao them cai moi duplicate
             $table->string('shortened')->collation('utf8mb4_bin')->unique()->nullable(false); // khai bao collation de column phan biet hoa thuong ( case sensitive )
+            $table->boolean('is_custom')->default(false); // cho biet url nay la custom string
             $table->bigInteger('count')->default(0); // dem so luot su dung cua url. Moi khoi tao se la 0
             $dt = new DateTime(now());
             $table->timestamp('created_at')->default(date_format($dt, 'Y-m-d h:m:s'));

@@ -23,19 +23,18 @@ class UrlController extends Controller
     public function store(Request $req){
         $user_id = 2; // neu khong auth() se mac dinh la Guest (user_id=2)
         $resultUrl = "";
-        //dump($this->getRoleOfUser(2));
+        
         if(auth()->check()){
             $user_id = auth()->user()->id;
             // khi la 1 logged in user thi moi xet toi customString
             $tmp = $req->input('customString');
             // neu chuoi custom nay dang duoc su dung
-            
             if($this->checkDuplicateCustomString($tmp)){
                 $req->session()->flash('sessionNotification',$tmp.' '.__('messages.textDuplicateCustomString'));
                 return view('url'); // ve trang chinh de thong bao loi
             }
 
-            if(isset($tmp)){ // Neu user co su dung customString
+            if(isset($tmp)){ // Neu user co su dung customString hoan toan moi
                 if($this->getNumberOfBrandedString($user_id)){ // kiem tra xem nguoi nay con so luong branded (>0) de su dung hay khong
                     $resultUrl = $tmp;
                     // tao mot record moi trong url table va luu no. Dong thoi cap nhat giam so luong branded string cua user
@@ -45,7 +44,8 @@ class UrlController extends Controller
                             'url'=> $req->input('originalUrl'),
                             'shortened' => $resultUrl,
                             'user_id'=>$user_id, 
-                            'count'=>0
+                            'count'=>0,
+                            'is_custom'=>true,
                         ]);
                         $url->save();
 
@@ -84,6 +84,7 @@ class UrlController extends Controller
                 $url->user_id = $user_id;
                 $url->url = $req->input('originalUrl');
                 $url->count = 0;
+                $url->is_custom = true; // khi tai su dung thi khong xem no la custom nua vi nguoi khac su dung thi chi la random
                 // cap nhat lai ngay thang het han cua url
                 switch($this->getRoleOfUser($user_id)){
                     case 0: // neu user la system admin (tam thoi cho giong loai user role=2)
@@ -125,7 +126,8 @@ class UrlController extends Controller
                     'url'=> $req->input('originalUrl'),
                     'shortened' => $resultUrl,
                     'user_id'=>$user_id, 
-                    'count'=>0
+                    'count'=>0,
+                    'is_custom'=>false,
                 ]);
                 $url->save();
                 return view('url')->with('resultUrls',['result'=>$resultUrl,'original'=>$req->input('originalUrl')]);
