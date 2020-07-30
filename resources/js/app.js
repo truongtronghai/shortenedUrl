@@ -125,7 +125,9 @@ window.saveQrImage = function(){
     
     document.getElementById('qrResultSave').href = canvas.toDataURL('image/png');
 }
-
+/**
+ * Change username asynchronous. Used in admin page
+ */
 window.passValuesToChangeUsernameModal = function(id,name){
     document.getElementById("username").value = name;
     document.getElementById("userid").value = id;
@@ -133,9 +135,14 @@ window.passValuesToChangeUsernameModal = function(id,name){
 
 window.changeUsername = function(id,name){
     //console.log('call ajax')
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $.ajax({
         url: '../utils/changeUsername',
-        type: 'get',
+        type: 'post',
         data: {'username':name,'userid':id},
         success: function(res){
             document.getElementById('showUsername').innerText = res;

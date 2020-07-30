@@ -22,7 +22,7 @@ return [
     'textUser'=>'Người dùng',
     'textLinkDesc'=>'Là số liên kết chúng tôi đã rút gọn giúp khách hàng',
     'textClickDesc'=>'Là số lần người dùng đã sử dụng liên kết được rút gọn của chúng tôi',
-    'textUserDesc'=>'Là số thành viên đang sử dụng các tính năng nâng cao của hệ thống',
+    'textUserDesc'=>'Là số thành viên đang sử dụng hệ thống',
     'email'=>'E-mail',
     'password'=>'Mật khẩu',
     'rememberMe'=>'Ghi nhớ đăng nhập',
@@ -110,4 +110,7 @@ return [
     'changeUsername'=>'Thay đổi tên',
     'close'=>'Đóng',
     'savechange'=>'Lưu thay đổi',
+    'dashboardUrlSorting'=>'Sắp xếp',
+    'dashboardUrlCountAsc'=>'Số lần truy cập tăng dần',
+    'dashboardUrlCountDesc'=>'Số lần truy cập giảm dần',
 ];

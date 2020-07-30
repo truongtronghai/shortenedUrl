@@ -159,6 +159,7 @@
             <div class="text-center">
                 <img class="mt-1 mb-1" width="40" height="40" src="/images/link.svg" alt="{{ __('messages.textLink') }}">
                 <div>
+                    <p class="font-weight-bold text-primary h2">{{__($urls)}}</p>
                     <h5>{{ __('messages.textLink') }}</h5>
                     <p>{{ __('messages.textLinkDesc') }}</p>
                 </div>
@@ -169,6 +170,7 @@
             <div class="text-center">
                 <img class="mt-1 mb-1" width="40" height="40" src="/images/passing.svg" alt="{{ __('messages.textClick') }}">
                 <div>
+                    <p class="font-weight-bold text-primary h2">{{__($countingUsage)}}</p>
                     <h5>{{ __('messages.textClick') }}</h5>
                     <p>{{ __('messages.textClickDesc') }}</p>
                 </div>
@@ -178,6 +180,7 @@
             <div class="text-center">
                 <img class="mt-1 mb-1" width="40" height="40" src="/images/users.svg" alt="{{ __('messages.textUser') }}">
                 <div>
+                    <p class="font-weight-bold text-primary h2">{{__($users)}}</p>
                     <h5>{{ __('messages.textUser') }}</h5>
                     <p>{{ __('messages.textUserDesc') }}</p>
                 </div>

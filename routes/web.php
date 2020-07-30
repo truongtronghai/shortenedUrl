@@ -39,6 +39,7 @@ Route::get('/utils/banners', function () { // link nay de goi den tap tin quan l
     return fread($fhandle,filesize($fname)); // tra ve chuoi JSON
 });
 
-Route::get('/utils/changeUsername','HomeController@changeUsername');
+Route::post('/utils/changeUsername','HomeController@changeUsername');
+Route::get('/utils/changeUsername',function(){ return redirect('/'); }); // ngan khong cho goi truc tiep tu browser
 
 Route::get('/{short}','UrlController@run');

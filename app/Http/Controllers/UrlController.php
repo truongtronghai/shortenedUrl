@@ -17,7 +17,11 @@ class UrlController extends Controller
     }
 
     public function index(){
-        return view('url');
+        return view('url',[
+            'urls'=>Url::count(),
+            'countingUsage'=>Url::sum('count'),
+            'users'=>User::where('role','>',1)->count(),
+        ]);
     }
     
     public function store(Request $req){

@@ -26,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {   
+        if($this->ignoreGuestAccount())
+            return redirect('/');        
+
         if(Auth::user()->role<=1){
             return view('admin.home',[
                 'totalUsers'=>User::where('role','>', 1)->count(),
@@ -68,6 +71,9 @@ class HomeController extends Controller
     }
 
     public function users(Request $req){
+        if($this->ignoreGuestAccount())
+            return redirect('/');
+
         $constrain = [];
         if($req->isMethod('post')){
             if($req->input('name'))
@@ -88,23 +94,41 @@ class HomeController extends Controller
     }
 
     public function urls(Request $req){
+        if($this->ignoreGuestAccount())
+            return redirect('/');
+
+        $constrain = [];
+
         if(Auth::user()->role<=1){
-            return view('admin.urls',[
-                'urls'=>Url::paginate(50),
-                ]);
+            // neu la tai khoan System admin va Guest thi tam thoi de trong
+            
         }else{
-            return view('admin.urls',[
-                'urls'=>Url::where([
-                    ['user_id',Auth::user()->id],
-                    ['expired_at','>',now()]
-                ])->paginate(50),
-                ]);
+            array_push($constrain,['user_id',Auth::user()->id]);
+            array_push($constrain,['expired_at','>',now()]);    
         }
 
-        return redirect('home'); // home nay la ten cua route
+        if($req->isMethod('post')){ // nhan du lieu duoc submit tu form
+            if($req->input('original'))
+                array_push($constrain,['url','like',"%".$req->input('original')."%"]);
+            if($req->input('short'))
+                array_push($constrain,['shortened','like',"%".$req->input('short')."%"]);
+            if(!is_null($req->input('sort'))) // neu co yeu cau sap xep
+                return view('admin.urls',[
+                    'urls'=>Url::where($constrain)->orderBy('count',$req->input('sort'))->paginate(50),
+                    ]);
+        }
+
+        return view('admin.urls',[
+            'urls'=>Url::where($constrain)->paginate(50),
+            ]);
     }
 
     public function changeUsername(Request $req){
+        if (!Auth::check()) {
+            // The user is not logged in...
+            return 'No back door for bag guy!';
+        }
+
         $u = User::where('id',$req->userid)->first();
         if(is_null($u))
             return '';
@@ -119,5 +143,18 @@ class HomeController extends Controller
             }
         }
         
+    }
+    /**
+     * Bo qua tai khoan Guest muon xem trang admin. Chen ham nay truoc moi method.
+     * Co the su dung Authorization thay cho cach nay khong ?
+     */
+    protected function ignoreGuestAccount(){
+        if(Auth::user()->role == 1) 
+        {
+            auth()->logout();
+            return true;
+        }
+
+        return false;
     }
 }
