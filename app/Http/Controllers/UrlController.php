@@ -13,15 +13,15 @@ use App\User;
 class UrlController extends Controller
 {
     public function __construct(){
-        
+        session([
+            'n_urls' => Url::count(),
+            'n_users' => User::where('role','>',1)->count(),
+            'n_using'=> Url::sum('count')
+        ]);
     }
 
     public function index(){
-        return view('url',[
-            'urls'=>Url::count(),
-            'countingUsage'=>Url::sum('count'),
-            'users'=>User::where('role','>',1)->count(),
-        ]);
+        return view('url');
     }
     
     public function store(Request $req){
