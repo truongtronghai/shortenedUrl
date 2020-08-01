@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #6e0278;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/images/rut-logo.png" class="" alt='logo rut.xyz' title='Rut.xyz' />
+                    <img src="/images/chep-xyz-logo.png" class="" alt='logo chep.xyz' title='Chep.xyz' />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
