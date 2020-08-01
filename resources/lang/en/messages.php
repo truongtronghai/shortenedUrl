@@ -119,4 +119,5 @@ return [
     'dashboardUrlSorting'=>'Sorting',
     'dashboardUrlCountAsc'=>'Counting of surfing Ascending',
     'dashboardUrlCountDesc'=>'Counting of surfing Descending',
+    'textLangDropdown'=>'Languages',
 ];

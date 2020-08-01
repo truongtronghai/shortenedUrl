@@ -38,15 +38,8 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        @if(App::isLocale('en')) 
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/lang/vi">tiếng Việt</a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/lang/en">English</a>
-                        </li>
-                        @endif
+                        @include('lang-dropdown') {{-- chen 1 doan code ben ngoai vao --}}
+                        
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

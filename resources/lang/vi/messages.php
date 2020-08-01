@@ -113,4 +113,5 @@ return [
     'dashboardUrlSorting'=>'Sắp xếp',
     'dashboardUrlCountAsc'=>'Số lần truy cập tăng dần',
     'dashboardUrlCountDesc'=>'Số lần truy cập giảm dần',
+    'textLangDropdown'=>'Ngôn ngữ',
 ];

@@ -22,7 +22,9 @@ class GetCurrentLanguage
     {
         
         if(!session()->exists('currentLang')){
-            session()->put('currentLang',App::getLocale()); // mac dinh la ngon ngu cua browser do Laravel truyen vao
+            $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+            $lang = in_array($lang,['vi','en','de','fr'])?$lang:'en';
+            session()->put('currentLang',$lang); // mac dinh la ngon ngu cua browser do Laravel truyen vao
         }
         
         App::setLocale(session('currentLang')); 
