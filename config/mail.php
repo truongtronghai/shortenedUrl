@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smpt.gmail.com'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME','truongtronghai@gmail.com'),
-            'password' => env('MAIL_PASSWORD','ulggbztpaqzcjnvy'),
+            'host' => env('MAIL_HOST'),
+            'port' => env('MAIL_PORT'),
+            'encryption' => env('MAIL_ENCRYPTION'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'truongtronghai@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'RutXYZ'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@chep.xyz'),
+        'name' => env('MAIL_FROM_NAME', 'Chep.XYZ'),
     ],
 
     /*
