@@ -12,16 +12,10 @@ use App\User;
 
 class UrlController extends Controller
 {
-    public function __construct(){
-        session([
-            'n_urls' => Url::count(),
-            'n_users' => User::where('role','>',1)->count(),
-            'n_using'=> Url::sum('count')
-        ]);
-    }
+    public function __construct(){}
 
     public function index(){
-        
+        $this->putStatisticNumberInSession();
         return view('url');
     }
     
@@ -261,5 +255,13 @@ class UrlController extends Controller
             return true;
         
         return false;
+    }
+
+    protected function putStatisticNumberInSession(){
+        session([
+            'n_urls' => Url::count(),
+            'n_users' => User::where('role','>',1)->count(),
+            'n_using'=> Url::sum('count')
+        ]);
     }
 }

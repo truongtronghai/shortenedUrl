@@ -8,7 +8,7 @@ return [
     'textResult'=>'Đã được rút gọn ở bên dưới :',
     'buttonCopy'=>'Lấy',
     'noImage'=>'Không hình',
-    'copyright' => 'Bản quyền &copy; Rut.xyz 2020',
+    'copyright' => 'Bản quyền &copy; Chep.xyz 2020',
     'textErrorDb'=>'Không tạo được URL rút gọn. Vui lòng liên hệ quản trị hệ thống',
     'textLogin'=>'Đăng nhập',
     'textLogout'=>'Thoát',
@@ -71,7 +71,7 @@ return [
     'textAnd'=>"và",
     'textForAnalyzing'=>'giữ trong bảng điều khiển để thống kê',
     'textUpgrade'=>'Nâng cấp',
-    'textBrandUrls'=>'Tạo chuỗi Rút Gọn theo ý muốn (Td: https://rut.xyz/CuaToi)',
+    'textBrandUrls'=>'Tạo chuỗi Rút Gọn theo ý muốn (Td: https://chep.xyz/CuaToi)',
     'textUrlClick'=>'Số lần click vào URL rút gọn',
     'textLickCreation'=>'Số lượng URL được tạo',
     'textUnlimited'=>'Không giới hạn',
@@ -87,7 +87,8 @@ return [
     'totalofpendingurls'=>'URL tạm khóa',
     'totalofactiveurls'=>'URL đang hoạt động',
     'totalofinactiveurls'=>'URL hết hạn',
-    'totalcustomurls'=>'URL tùy chọn còn lại',
+    'totalcustomurls'=>'URL chuỗi tùy chọn',
+    'totalremainingcustomurls'=>'URL tùy chọn còn lại',
     'totalrandomurls'=>'URL chuỗi ngẫu nhiên',
     'seemore'=>'Xem thêm',
     'shortenedlinks'=>'URL rút gọn',
@@ -114,4 +115,5 @@ return [
     'dashboardUrlCountAsc'=>'Số lần truy cập tăng dần',
     'dashboardUrlCountDesc'=>'Số lần truy cập giảm dần',
     'textLangDropdown'=>'Ngôn ngữ',
+    'home'=>'Trang chủ'
 ];

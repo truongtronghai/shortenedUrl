@@ -39,7 +39,7 @@
         <div class="card text-white bg-success float-left m-1" style="max-width: 18rem;">
             <div class="card-header"><i class="fas fa-link"></i></div>
             <div class="card-body">
-                <h5 class="card-title">{{ __('messages.totalcustomurls') }}</h5>
+                <h5 class="card-title">{{ __('messages.totalremainingcustomurls') }}</h5>
                 <p class="card-text font-weight-bolder text-right display-4">{{ $nCustomUrls }}</p>
             </div>
         </div>

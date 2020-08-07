@@ -63,8 +63,8 @@ function checkCustomStringValid(s){
 
 function watchCustomString(s){
     if(checkCustomStringValid(s)){
-        document.getElementById('customStringResult').innerText = s.length?('rut.xyz/'+s):'';
-        document.getElementById('customStringLength').innerText = s.length?(s.length+8):'';
+        document.getElementById('customStringResult').innerText = s.length?('chep.xyz/'+s):'';
+        document.getElementById('customStringLength').innerText = s.length?(s.length+9):'';
     }else{
         document.getElementById('customStringResult').innerText = '';
         document.getElementById('customStringLength').innerText = '';
