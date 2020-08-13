@@ -3,7 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:image" content="https://chep.xyz/images/chep-xyz-logo.png">
+    <meta name="og:url" content="https://chep.xyz">
+    <meta name="og:site_name" content="{{ config('app.name') }}">
+    <meta name="fb:admins" content="2558726334244460">
+    <meta name="fb:app_id" content="768932120543780">
+    <meta name="og:type" content="website">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

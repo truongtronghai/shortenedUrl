@@ -15,9 +15,9 @@
 
     <div class="row">
         <div class="col text-center mb-1 text-secondary">
-            <cite>
+            <cite><strong>
                 {{ __('messages.slogan') }}
-            </cite>
+            </strong></cite>
         </div>
     </div>
     
@@ -28,7 +28,7 @@
 
     <div class="row">
         <div class="col-md-11 col-9">
-            <input id="originalUrl" type="text" class="form-control" name="originalUrl" placeholder="https://" required autofocus oninput="if(checkUrlValid(this.value)) document.getElementById('btnGo').disabled=false;else document.getElementById('btnGo').disabled=true;">
+            <input id="originalUrl" type="text" class="form-control form-control-lg border border-primary" name="originalUrl" placeholder="https://" required autofocus oninput="if(checkUrlValid(this.value)) document.getElementById('btnGo').disabled=false;else document.getElementById('btnGo').disabled=true;">
             @if(isset(auth()->user()->id))
                 <input type="hidden" id="userId" name="userId" value="{{auth()->user()->id}}">
             @else
@@ -37,7 +37,7 @@
 
         </div>
         <div class="col-md-1 col-3">
-            <button id="btnGo" type="submit" class="btn btn-primary" disabled >
+            <button id="btnGo" type="submit" class="btn btn-primary btn-lg" disabled >
                 {{ __('messages.buttonGo') }}
             </button>
         </div>
@@ -81,20 +81,17 @@
             <em><strong>{{ $resultUrls['original'] }}</strong></em> &nbsp;<span class="text-muted">{{ __('messages.textResult') }}</span>
         </div>
     </div>
-    <div class="row mt-1 mb-1">
-        <div id="resultBanner" class="col">
-            <a href='' target="_blank"><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
-        </div>
-    </div>
-    <div class="row mt-1">
-        <div class="col-lg-6 text-center">
-            <div class="card h-100">
+    
+    <div class="row">
+        <div class="col-lg-6 text-center my-2">
+            <div class="card h-100 border border-primary">
                 <div class="card-body">
-                    <div class="alert alert-success">
-                        <span id="resultUrl">{{ config('app.url').'/'.$resultUrls['result'] }}</span>
-                    </div>
                     <p class="card-text">{{ __('messages.textClipboardGuide') }}</p>
-                    <a href="#" class="btn btn-primary" onclick="copyToClipboard('resultUrl');">{{ __('messages.buttonCopy') }}</a>
+                    <div class="p-3 bg-primary text-white">
+                        <span id="resultUrl" class="h3">{{ config('app.url').'/'.$resultUrls['result'] }}</span>
+                    </div>
+                    
+                    <a href="#" class="btn btn-success my-2" onclick="copyToClipboard('resultUrl');">{{ __('messages.buttonCopy') }}</a>
                     @guest
                     <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 3 {{ __('messages.textMonths') }}</p>
                     @else
@@ -113,8 +110,8 @@
             </div>
         </div>
         
-        <div class="col-lg-6">
-            <div class="card align-self-center text-center">
+        <div class="col-lg-6 my-2">
+            <div class="card align-self-center text-center border border-success">
                 @guest
                 <div class="card-body">
                     <p class="card-text">{{ __('messages.textQrRecommend') }}</p>
@@ -143,16 +140,12 @@
             </div>
         </div>
     </div>
-    @endisset
-
-    <div class="row">
-        <div id="contentBanner0" class="col-lg mt-1 mb-1">
-            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
-        </div>
-        <div id="contentBanner1" class="col-lg mt-1 mb-1">
-            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+    <div class="row mt-1 mb-1">
+        <div id="resultBanner" class="col">
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto d-block" alt='' title='' /></a>
         </div>
     </div>
+    @endisset
 
     <div class="row mt-2">
         <div class="col border border-dark rounded m-1">
@@ -188,6 +181,16 @@
         </div>
     </div>
     <div class="row">
+        <div id="contentBanner0" class="col-lg mt-1 mb-1">
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+        </div>
+        <div id="contentBanner1" class="col-lg mt-1 mb-1">
+            <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
+        </div>
+    </div>
+
+    @include('comparison-table') {{-- chen 1 doan code ben ngoai vao --}}
+    <div class="row">
         <div id="contentBanner2" class="col-lg mt-1 mb-1">
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
@@ -195,7 +198,6 @@
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
-    @include('comparison-table') {{-- chen 1 doan code ben ngoai vao --}}
     <div class="row">
         <div id="contentBanner4" class="col-lg mt-1 mb-1">
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
