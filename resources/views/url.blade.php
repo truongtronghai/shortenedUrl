@@ -93,10 +93,7 @@
                     
                     <a href="#" class="btn btn-success my-2" onclick="copyToClipboard('resultUrl');">{{ __('messages.buttonCopy') }}</a>
                     @guest
-                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 3 {{ __('messages.textMonths') }}</p>
-                    @else
-                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} 6 {{ __('messages.textMonths') }}</p>
-                    @endguest
+                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} <strong>3</strong> {{ __('messages.textMonths') }}</p>
                     <p class="card-text">{{ __('messages.textWantLonger') }}</p>
                     <p class="card-text">
                         {{ __('messages.textFindOutMore') }}
@@ -106,6 +103,10 @@
                             </svg>
                         </a>
                     </p>
+                    @else
+                    <p class="card-text">{{ __('messages.textNotificationLinkExpired') }} <strong>6</strong> {{ __('messages.textMonths') }}</p>
+                    @endguest
+                    
                 </div>
             </div>
         </div>
