@@ -122,4 +122,10 @@ return [
     'dashboardUrlCountDesc'=>'Surfen zählen absteigend',
     'textLangDropdown'=>'Sprache',
     'home'=>'Startseite',
+    'textEasyImpressive'=>'Einfach und beeindruckend!',
+    'textEasyImpressiveDesc'=>'Verwenden Sie Chep.xyz, um einen verkürzten Link zu erstellen, damit Sie sich leicht daran erinnern können. Sparen Sie Kosten beim Senden von Links per SMS und READABLE-Links für Ihre Marketingkampagnen.',
+    'textSimpleFast'=>'Einfacher und schneller URL-Shortener!',
+    'textSimpleFastDesc'=>'Mit Chep.xyz können Sie lange Links im Internet mit wenigen Schritten reduzieren. Fügen Sie einfach die lange URL ein oder geben Sie sie ein und klicken Sie auf die Schaltfläche. Kopieren Sie auf dem folgenden Ergebnisbildschirm die verkürzte URL und teilen Sie sie auf Websites, im Chat und per E-Mail. Bei einem registrierten Konto wird das Ergebnis im QR-Code angezeigt, sodass Sie es problemlos mit Ihrem QR-Code-Leser auf dem Smartphone abrufen können. Überprüfen Sie nach dem Kürzen der URL, wie viele Klicks sie erhalten hat.',
+    'textShortenShare'=>'Kürzen, teilen und verfolgen',
+    'textShortenShareDesc'=>'Ihre verkürzten URLs können in Veröffentlichungen, Anzeigen, Blogs, Foren, E-Mails, Sofortnachrichten und anderen Orten verwendet werden. Verfolgen Sie Statistiken für Ihr Unternehmen und Ihre Projekte, indem Sie die Anzahl der Treffer von Ihrer URL mit dem Klickzähler überwachen.',
 ];

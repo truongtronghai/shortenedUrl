@@ -21,6 +21,12 @@ Route::get('/lang/{locale?}',function($locale='en'){
     //dump(session()->all());
     return back();// redirect to the same page
 });
+Route::get('/info/privacy',function(){
+    return view('privacy-policy');
+});
+Route::get('/info/tos',function(){
+    return view('terms-of-service');
+});
 /**
  * Auth::routes() is just a helper class that helps you generate all the routes required for user authentication.
  */

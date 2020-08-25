@@ -115,5 +115,11 @@ return [
     'dashboardUrlCountAsc'=>'Số lần truy cập tăng dần',
     'dashboardUrlCountDesc'=>'Số lần truy cập giảm dần',
     'textLangDropdown'=>'Ngôn ngữ',
-    'home'=>'Trang chủ'
+    'home'=>'Trang chủ',
+    'textEasyImpressive'=>'Ấn tượng và dễ dàng!',
+    'textEasyImpressiveDesc'=>'Sử dụng Chep.xyz để tạo đường dẫn địa chỉ trang web ngắn để người dùng hay khách hàng của bạn dễ ghi nhớ và nhận dạng. Tiết kiệm chi phí tin nhắn SMS cho các chiến dịch marketing của bạn',
+    'textSimpleFast'=>'Đơn giản và nhanh chóng!',
+    'textSimpleFastDesc'=>'Chep.xyz giúp bạn tạo ra đường dẫn ngắn cực kỳ đơn giản. Chỉ cần dán ra từ bộ nhớ hay nhập trực tiếp vào ô địa chỉ bên trên. Nhấn nút thực hiện. Kết quả sẽ trả về cho bạn ở ngay bên dưới. Lấy kết quả ngắn gọn được tạo và chia sẻ ngay theo ý muốn của bạn trên bất kỳ nền tảng hay thiết bị nào. Nếu bạn có tài khoản đăng ký trên hệ thống bạn còn nhận được mã QR giúp bạn dễ dàng lưu lại dưới dạng tập tin hình ảnh trên điện thoại hoặc dùng ứng dụng quét mã QR để lấy địa chỉ rút gọn lên điện thoại. Sau khi rút gọn, bạn sẽ theo dõi bao nhiêu lượt truy cập đến địa chỉ gốc của bạn thông qua đường dẫn rút gọngọn',
+    'textShortenShare'=>'Rút gọn, chia sẻ và theo dõi kết quả',
+    'textShortenShareDesc'=>'Địa chỉ rút gọn có thể dùng trong quảng cáo, email, tin nhắn, blog, mạng xã hội hay bất kỳ nền tảng, ứng dụng nào bạn muốn. Theo dõi thống kê số lượt click vào địa chỉ rút gọn đã tạo của bạn để đến với địa chỉ gốc vốn dài và khó nhập cho người dùng.',
 ];

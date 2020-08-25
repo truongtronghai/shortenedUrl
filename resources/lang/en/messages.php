@@ -122,4 +122,10 @@ return [
     'dashboardUrlCountDesc'=>'Counting of surfing Descending',
     'textLangDropdown'=>'Languages',
     'home'=>'Homepage',
+    'textEasyImpressive'=>'Easy and Impressive!',
+    'textEasyImpressiveDesc'=>'Use Chep.xyz to create a shortened link making it EASY to remember, SAVE cost when send link via SMS messages and READABLE links for your marketing campaigns.',
+    'textSimpleFast'=>'Simple and fast URL shortener!',
+    'textSimpleFastDesc'=>'Chep.xyz allows to reduce long links on the Internet with few quick steps. Just paste or type the long URL and click the button. On the beneath screen of result, copy the shortened URL and share it on websites, chat and e-mail. With registered account, the result will show into QR code so that you can get it easily with your QR code reader on smart phone. After shortening the URL, check how many clicks it received.',
+    'textShortenShare'=>'Shorten, share and track',
+    'textShortenShareDesc'=>'Your shortened URLs can be used in publications, advertisements, blogs, forums, e-mails, instant messages, and other locations. Track statistics for your business and projects by monitoring the number of hits from your URL with the click counter.',
 ];

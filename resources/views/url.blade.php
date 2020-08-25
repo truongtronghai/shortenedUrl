@@ -181,7 +181,13 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
+        <div class="col">
+            <p class="h1 text-center text-primary">{{__('messages.textEasyImpressive')}}</p>
+            <p class="lead text-center">{{__('messages.textEasyImpressiveDesc')}}</p>
+        </div>
+    </div>
+    <div class="row mt-2">
         <div id="contentBanner0" class="col-lg mt-1 mb-1">
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
@@ -189,9 +195,14 @@
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
-
-    @include('comparison-table') {{-- chen 1 doan code ben ngoai vao --}}
-    <div class="row">
+    <div class="row mt-2">
+        <div class="col">
+            <p class="h1 text-center text-primary">{{__('messages.textSimpleFast')}}</p>
+            <p class="lead text-center">{{__('messages.textSimpleFastDesc')}}</p>
+        </div>
+    </div>
+    
+    <div class="row mt-2">
         <div id="contentBanner2" class="col-lg mt-1 mb-1">
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
@@ -199,7 +210,15 @@
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row mt-2">
+        <div class="col">
+            <p class="h1 text-center text-primary">{{__('messages.textShortenShare')}}</p>
+            <p class="lead text-center">{{__('messages.textShortenShareDesc')}}</p>
+        </div>
+    </div>
+
+    <div class="row mt-2">
         <div id="contentBanner4" class="col-lg mt-1 mb-1">
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
@@ -207,7 +226,7 @@
             <a href='' target="_blank"><img src="" class="img-fluid mx-auto" alt='' title='' /></a>
         </div>
     </div>
-    
+    @include('comparison-table') {{-- chen 1 doan code ben ngoai vao --}}
 </div>    
 @endsection
 
