@@ -91,7 +91,7 @@ class UrlController extends Controller
                         $dt = new \DateTime(now()); // dau '\' phia truoc la de Laravel biet ham nay cua PHP
                         $url->created_at = date_format($dt, 'Y-m-d h:m:s');
                         
-                        $dt = $dt->add(new \DateInterval('P6M')); // het han sau 6 thang (P6M)
+                        $dt = $dt->add(new \DateInterval('P3Y')); // het han sau 3 nam
                         $url->expired_at = date_format($dt, 'Y-m-d h:m:s');
                         
                         $dt = $dt->add(new \DateInterval('P3M')); // them 3 thang de luu giu truoc khi tai su dung
@@ -101,7 +101,7 @@ class UrlController extends Controller
                         $dt = new \DateTime(now());
                         $url->created_at = date_format($dt, 'Y-m-d h:m:s');
                         
-                        $dt = $dt->add(new \DateInterval('P3M')); // het han mac dinh la 3 thang (P3M)
+                        $dt = $dt->add(new \DateInterval('P1Y')); // het han mac dinh la 1 nam
                         $url->expired_at = date_format($dt, 'Y-m-d h:m:s');
                         
                         $dt = $dt->add(new \DateInterval('P3M')); // them 3 thang de luu giu truoc khi tai su dung

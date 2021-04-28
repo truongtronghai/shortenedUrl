@@ -13,11 +13,10 @@
     <tbody>
         <tr>
             <td>{{__('messages.textExpiration')}}</td>
-            <td class="text-center">3 {{__('messages.textMonths')}}</td>
+            <td class="text-center">12 {{__('messages.textMonths')}}</td>
             <td class="text-center">
-                6 {{__('messages.textMonths')}} ( + 3 {{__('messages.textMonths')}} {{__('messages.textForAnalyzing')}} ) 
+                36 {{__('messages.textMonths')}} ( + 3 {{__('messages.textMonths')}} {{__('messages.textForAnalyzing')}} ) 
             </td>
-            {{--<td class="text-center">12 {{__('messages.textMonths')}}</td>--}}
         </tr>
         {{-- Phan nay chua lam duoc nen tam thoi cho an di--}}
         {{--
